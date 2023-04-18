@@ -1,14 +1,14 @@
-package com.grupo3.Lab1.Entity;
+package com.grupo3.Lab1.entity;
 
-public class Eme_Habilidad {
+public class Vol_Habilidad {
 
     private Integer id;
-    private Integer id_emergencia;
+    private Integer id_voluntario;
     private Integer id_habilidad;
 
-    public Eme_Habilidad(Integer id, Integer id_emergencia, Integer id_habilidad) {
+    public Vol_Habilidad(Integer id, Integer id_voluntario, Integer id_habilidad) {
         this.id = id;
-        this.id_emergencia = id_emergencia;
+        this.id_voluntario = id_voluntario;
         this.id_habilidad = id_habilidad;
     }
 
@@ -20,12 +20,12 @@ public class Eme_Habilidad {
         this.id = id;
     }
 
-    public Integer getId_emergencia() {
-        return id_emergencia;
+    public Integer getId_voluntario() {
+        return id_voluntario;
     }
 
-    public void setId_emergencia(Integer id_emergencia) {
-        this.id_emergencia = id_emergencia;
+    public void setId_voluntario(Integer id_voluntario) {
+        this.id_voluntario = id_voluntario;
     }
 
     public Integer getId_habilidad() {

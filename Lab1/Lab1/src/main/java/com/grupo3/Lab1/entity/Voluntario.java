@@ -1,4 +1,4 @@
-package com.grupo3.Lab1.Entity;
+package com.grupo3.Lab1.entity;
 
 import java.util.Date;
 

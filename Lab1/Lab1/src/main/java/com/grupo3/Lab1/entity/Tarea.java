@@ -1,4 +1,4 @@
-package com.grupo3.Lab1.Entity;
+package com.grupo3.Lab1.entity;
 
 public class Tarea {
     private Integer id;

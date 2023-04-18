@@ -1,4 +1,4 @@
-package com.grupo3.Lab1.Repository;
+package com.grupo3.Lab1.repository;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

@@ -1,6 +1,6 @@
-package com.grupo3.Lab1.Repository;
+package com.grupo3.Lab1.repository;
 
-import com.grupo3.Lab1.Entity.Eme_Habilidad;
+import com.grupo3.Lab1.entity.Eme_Habilidad;
 
 import java.util.List;
 
