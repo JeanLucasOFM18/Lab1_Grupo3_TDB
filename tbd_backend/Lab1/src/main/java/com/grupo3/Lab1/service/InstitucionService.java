@@ -22,19 +22,19 @@ public class InstitucionService {
         return list;
     }
 
-    @PostMapping("/Institucion")
+    @PostMapping("/institucion")
     public String createInstitucion(@RequestBody Institucion institucion){
         Institucion result = institucionRepository.createInstitucion(institucion);
         return "Se ha creado el elemento con id: " + result.getId();
     }
 
-    @PutMapping("/Institucion/update")
+    @PutMapping("/institucion/update")
     public String updateInstitucion(@RequestBody Institucion institucion){
         Institucion result = institucionRepository.updateInstitucion(institucion);
         return "Se ha actualizado el elemento con id: " + result.getId();
     }
 
-    @DeleteMapping("/Institucion/delete/{id}")
+    @DeleteMapping("/institucion/delete/{id}")
     public String deleteInstitucion(@PathVariable Integer id){
         institucionRepository.deleteInstitucionById(id);
         return "Se ha eliminado el elemento con id: " + id;

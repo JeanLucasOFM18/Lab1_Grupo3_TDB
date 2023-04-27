@@ -50,7 +50,7 @@ public class RankingRepositoryImp implements RankingRepository{
 
     @Override
     public Ranking updateRanking(Ranking ranking){
-        String sql = "UPDATE institucion SET id_voluntario = :id_voluntario, id_tarea = :id_tarea, puntaje = :puntaje " +
+        String sql = "UPDATE ranking SET id_voluntario = :id_voluntario, id_tarea = :id_tarea, puntaje = :puntaje " +
                 "WHERE id = :id";
         Connection conn = sql2o.open();
         try (conn) {

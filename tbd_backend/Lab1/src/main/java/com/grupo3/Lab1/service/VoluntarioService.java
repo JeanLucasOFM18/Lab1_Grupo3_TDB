@@ -22,19 +22,19 @@ public class VoluntarioService {
         return list;
     }
 
-    @PostMapping("/Voluntario")
+    @PostMapping("/voluntario")
     public String createVoluntario(@RequestBody Voluntario voluntario){
         Voluntario result = voluntarioRepository.createVoluntario(voluntario);
         return "Se ha creado el elemento con id: " + result.getId();
     }
 
-    @PutMapping("/Voluntario/update")
+    @PutMapping("/voluntario/update")
     public String updateVoluntario(@RequestBody Voluntario voluntario){
         Voluntario result = voluntarioRepository.updateVoluntario(voluntario);
         return "Se ha actualizado el elemento con id: " + result.getId();
     }
 
-    @DeleteMapping("/Voluntario/delete/{id}")
+    @DeleteMapping("/voluntario/delete/{id}")
     public String deleteVoluntario(@PathVariable Integer id){
         voluntarioRepository.deleteVoluntarioById(id);
         return "Se ha eliminado el elemento con id: " + id;
