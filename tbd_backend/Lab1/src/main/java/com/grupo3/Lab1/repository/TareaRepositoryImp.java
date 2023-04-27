@@ -53,7 +53,7 @@ public class TareaRepositoryImp implements TareaRepository {
         String sql = "UPDATE tarea SET nombre = :nombre, descripcion = :descripcion, " +
                 "cantidad_requeridos = :cantidad_requeridos, cantidad_inscritos = :cantidad_inscritos, " +
                 "id_emergencia = :id_emergencia, id_estado = :id_estado" +
-                "WHERE id = :id";
+                " WHERE id = :id";
         Connection conn = sql2o.open();
         try (conn) {
             conn.createQuery(sql)

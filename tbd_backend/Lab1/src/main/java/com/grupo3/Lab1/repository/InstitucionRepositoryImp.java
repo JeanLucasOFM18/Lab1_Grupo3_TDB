@@ -50,7 +50,7 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
 
     @Override
     public Institucion updateInstitucion(Institucion institucion){
-        String sql = "UPDATE institucion SET nombre = :nombre, direccion = :direccion, contacto = :contacto" +
+        String sql = "UPDATE institucion SET nombre = :nombre, direccion = :direccion, contacto = :contacto " +
                 "WHERE id = :id";
         Connection conn = sql2o.open();
         try (conn) {
