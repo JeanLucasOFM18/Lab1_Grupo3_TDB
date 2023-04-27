@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class Eme_HabilidadService {
 
@@ -14,7 +15,7 @@ public class Eme_HabilidadService {
         this.eme_habilidadRepository = eme_habilidadRepository;
     }
 
-    @GetMapping("/Eme_Habilidad")
+    @GetMapping("/eme_habilidad")
     public List<Eme_Habilidad> getAllEme_Habilidad(){
         List<Eme_Habilidad> list = eme_habilidadRepository.getAllEme_Habilidad();
         return list;

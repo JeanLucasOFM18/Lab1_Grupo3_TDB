@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class HabilidadService {
 
@@ -14,13 +15,13 @@ public class HabilidadService {
         this.habilidadRepository = habilidadRepository;
     }
 
-    @GetMapping("/Habilidad")
+    @GetMapping("/habilidades")
     public List<Habilidad> getAllHabilidad(){
         List<Habilidad> list = habilidadRepository.getAllHabilidad();
         return list;
     }
 
-    @PostMapping("/Habilidad")
+    @PostMapping("/habilidades")
     public String createHabilidad(@RequestBody Habilidad habilidad){
         Habilidad result = habilidadRepository.createHabilidad(habilidad);
         return "Se ha creado el elemento con id: " + result.getId();

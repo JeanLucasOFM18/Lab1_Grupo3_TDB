@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class Estado_TareaService {
 
@@ -14,13 +15,13 @@ public class Estado_TareaService {
         this.estado_tareaRepository = estado_tareaRepository;
     }
 
-    @GetMapping("/Estado_Tarea")
+    @GetMapping("/estados_tarea")
     public List<Estado_Tarea> getAllEstado_Tarea(){
         List<Estado_Tarea> list = estado_tareaRepository.getAllEstado_Tarea();
         return list;
     }
 
-    @PostMapping("/Estado_Tarea")
+    @PostMapping("/estados_tarea")
     public String createEstado_Tarea(@RequestBody Estado_Tarea estado_tarea){
         Estado_Tarea result = estado_tareaRepository.createEstado_Tarea(estado_tarea);
         return "Se ha creado el elemento con id: " + result.getId();

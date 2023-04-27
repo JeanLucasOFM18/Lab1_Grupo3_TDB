@@ -30,8 +30,8 @@ public class Tarea_HabilidadRepositoryImp implements Tarea_HabilidadRepository{
 
     @Override
     public Tarea_Habilidad createTarea_Habilidad(Tarea_Habilidad tarea_habilidad) {
-        String sql = "INSERT INTO tarea_habilidad (id, id_tarea, id_habilidad) " +
-                "VALUES (:id, :id_tarea, :id_habilidad)";
+        String sql = "INSERT INTO tarea_habilidad (id, id_tarea, id_eme_habilidad) " +
+                "VALUES (:id, :id_tarea, :id_eme_habilidad)";
         Connection conn = sql2o.open();
         try (conn) {
             int id = (int) conn.createQuery(sql,true)

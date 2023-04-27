@@ -31,7 +31,7 @@ public class TareaRepositoryImp implements TareaRepository {
     public Tarea createTarea(Tarea tarea) {
         String sql = "INSERT INTO tarea (id, nombre, descripcion, cantidad_requeridos, cantidad_inscritos, " +
                 "id_emergencia, id_estado) " +
-                "Values (:id, :nombre, :descripcion, :cantidad_requeridos, :id_emergencia, :id_estado)";
+                "Values (:id, :nombre, :descripcion, :cantidad_requeridos, :cantidad_inscritos, :id_emergencia, :id_estado)";
         Connection conn = sql2o.open();
         try (conn) {
             int id = (int) conn.createQuery(sql, true)

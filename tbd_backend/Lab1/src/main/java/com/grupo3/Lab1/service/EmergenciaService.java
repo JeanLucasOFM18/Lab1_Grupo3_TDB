@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class EmergenciaService {
 
@@ -14,25 +15,24 @@ public class EmergenciaService {
         this.emergenciaRepository = emergenciaRepository;
     }
 
-    @GetMapping("/Emergencia")
+    @GetMapping("/emergencias")
     public List<Emergencia> getAllEmergencia(){
-        List<Emergencia> list = emergenciaRepository.getAllEmergencia();
-        return list;
+        return emergenciaRepository.getAllEmergencia();
     }
 
-    @PostMapping("/Emergencia")
+    @PostMapping("/emergencias")
     public String createEmergencia(@RequestBody Emergencia emergencia){
         Emergencia result = emergenciaRepository.createEmergencia(emergencia);
         return "Se ha creado el elemento con id: " + result.getId();
     }
 
-    @PutMapping("/Emergencia/update")
+    @PutMapping("/emergencia/update")
     public String updateEmergencia(@RequestBody Emergencia emergencia){
         Emergencia result = emergenciaRepository.updateEmergencia(emergencia);
         return "Se ha actualizado el elemento con id: " + result.getId();
     }
 
-    @DeleteMapping("/Emergencia/delete/{id}")
+    @DeleteMapping("/emergencia/delete/{id}")
     public String deleteEmergencia(@PathVariable Integer id){
         emergenciaRepository.deleteEmergenciaById(id);
         return "Se ha eliminado el elemento con id: " + id;
