@@ -1,0 +1,16 @@
+[
+  {
+    "name": "tareas",
+    "path": "/tareas",
+    "component": "C:\\\\Users\\\\Marce\\\\OneDrive\\\\Documentos\\\\Estudios\\\\Semestre 7\\\\TBD\\\\Proyecto\\\\L1-TBD\\\\Lab1_Grupo3_TDB\\\\tbd_frontend\\\\tbd_frontend\\\\pages\\\\tareas.vue",
+    "chunkName": "pages/tareas",
+    "_name": "_06acee98"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Users\\\\Marce\\\\OneDrive\\\\Documentos\\\\Estudios\\\\Semestre 7\\\\TBD\\\\Proyecto\\\\L1-TBD\\\\Lab1_Grupo3_TDB\\\\tbd_frontend\\\\tbd_frontend\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_24f9c3a0"
+  }
+]
