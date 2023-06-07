@@ -1,7 +1,5 @@
 package com.grupo3.Lab1.repository;
 
-import com.grupo3.Lab1.entity.Emergencia;
-import com.grupo3.Lab1.entity.Tarea;
 import com.grupo3.Lab1.entity.Voluntario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -79,6 +77,21 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
         }catch(Exception e){
             System.out.println(e);
         }finally{
+            conn.close();
+        }
+    }
+    @Override
+    public Voluntario getVoluntarioById(Integer id) {
+        String sql = "SELECT * FROM voluntario WHERE id = :id";
+        Connection conn = sql2o.open();
+        try (conn) {
+            return conn.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Voluntario.class);
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        } finally {
             conn.close();
         }
     }

@@ -39,4 +39,19 @@ public class VoluntarioService {
         voluntarioRepository.deleteVoluntarioById(id);
         return "Se ha eliminado el elemento con id: " + id;
     }
+
+    @PutMapping("/voluntario/{id}/ubicacion")
+    public String setUbicacionByCoordinates(@PathVariable Integer id,
+                                            @RequestParam double latitud,
+                                            @RequestParam double longitud) {
+
+        Voluntario voluntario = voluntarioRepository.getVoluntarioById(id);
+
+        if (voluntario == null) {
+            return "No se encontró el voluntario con el ID: " + id;
+        }
+        voluntario.setUbicacion(latitud, longitud);
+        voluntarioRepository.updateVoluntario(voluntario);
+        return "Se ha actualizado la ubicación del voluntario con el ID: " + id;
+    }
 }

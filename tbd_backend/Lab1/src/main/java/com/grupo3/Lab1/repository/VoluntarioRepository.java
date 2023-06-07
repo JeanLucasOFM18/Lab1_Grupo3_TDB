@@ -13,4 +13,6 @@ public interface VoluntarioRepository {
     public Voluntario updateVoluntario(Voluntario voluntario);
 
     public void deleteVoluntarioById(Integer id);
+
+    public Voluntario getVoluntarioById(Integer id);
 }
