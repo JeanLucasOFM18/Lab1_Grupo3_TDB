@@ -71,6 +71,7 @@ CREATE TABLE public.vol_habilidad (
 CREATE TABLE public.voluntario (
     id serial NOT NULL PRIMARY KEY,
     nombre varchar(100),
-    fecha_nacimiento date
+    fecha_nacimiento date,
+    ubicacion geography(Point, 4326)
 );
 

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+import org.locationtech.jts.geom.*;
 
 import java.util.List;
 
@@ -30,23 +31,30 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
 
     @Override
     public Voluntario createVoluntario(Voluntario voluntario) {
-        String sql = "INSERT INTO voluntario (id, nombre, fecha_nacimiento) " +
-                "VALUES (:id, :nombre, :fecha_nacimiento)";
+        String sql = "INSERT INTO voluntario (id, nombre, fecha_nacimiento, ubicacion) " +
+                "VALUES (:id, :nombre, :fecha_nacimiento, ST_GeomFromText(:ubicacionText, 4326))";
+
         Connection conn = sql2o.open();
-        try (conn) {
-            int id = (int) conn.createQuery(sql,true)
+        try {
+            String ubicacionText = voluntario.getUbicacion().toText();  // Convierte el objeto Point a texto (WKT)
+            int id = (int) conn.createQuery(sql, true)
+                    .addParameter("ubicacionText", ubicacionText)  // Utiliza el texto de ubicación como parámetro
                     .bind(voluntario)
                     .executeUpdate()
                     .getKey();
             voluntario.setId(id);
             return voluntario;
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             return null;
-        }finally{
+        } finally {
             conn.close();
         }
     }
+
+
+
+
 
     @Override
     public Voluntario updateVoluntario(Voluntario voluntario) {
@@ -65,6 +73,8 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
             conn.close();
         }
     }
+
+
 
     @Override
     public void deleteVoluntarioById(Integer id) {

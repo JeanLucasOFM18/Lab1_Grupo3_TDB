@@ -25,8 +25,13 @@ public class VoluntarioService {
     @PostMapping("/voluntario")
     public String createVoluntario(@RequestBody Voluntario voluntario){
         Voluntario result = voluntarioRepository.createVoluntario(voluntario);
-        return "Se ha creado el elemento con id: " + result.getId();
+        if (result != null) {
+            return "Se ha creado el voluntario con ID: " + result.getId();
+        } else {
+            return "No se pudo crear el voluntario.";
+        }
     }
+
 
     @PutMapping("/voluntario/update")
     public String updateVoluntario(@RequestBody Voluntario voluntario){
@@ -39,7 +44,7 @@ public class VoluntarioService {
         voluntarioRepository.deleteVoluntarioById(id);
         return "Se ha eliminado el elemento con id: " + id;
     }
-
+    /*
     @PutMapping("/voluntario/{id}/ubicacion")
     public String setUbicacionByCoordinates(@PathVariable Integer id,
                                             @RequestParam double latitud,
@@ -54,4 +59,5 @@ public class VoluntarioService {
         voluntarioRepository.updateVoluntario(voluntario);
         return "Se ha actualizado la ubicación del voluntario con el ID: " + id;
     }
+     */
 }
