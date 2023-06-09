@@ -31,12 +31,14 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository{
     @Override
     public Emergencia createEmergencia(Emergencia emergencia) {
         String sql = "INSERT INTO emergencia (id, nombre, descripcion," +
-                " fecha_inicio, fecha_termino, id_institucion) " +
+                " fecha_inicio, fecha_termino, ubicacion, id_institucion) " +
                 "VALUES (:id, :nombre, :descripcion, :fecha_inicio"
-                +", :fecha_termino, :id_institucion)";
+                +", :fecha_termino, ST_GeomFromText(:ubicacionText, 4326), :id_institucion)";
         Connection conn = sql2o.open();
         try (conn) {
+            String ubicacionText = emergencia.getUbicacion().toText();
             int id = (int) conn.createQuery(sql,true)
+                    .addParameter("ubicacionText", ubicacionText)
                     .bind(emergencia)
                     .executeUpdate()
                     .getKey();
