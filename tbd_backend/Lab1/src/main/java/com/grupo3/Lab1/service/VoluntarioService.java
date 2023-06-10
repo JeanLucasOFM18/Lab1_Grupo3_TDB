@@ -21,9 +21,13 @@ public class VoluntarioService {
     }
 
     @GetMapping("/voluntario")
-    public List<Voluntario> getAllVoluntario(){
-        List<Voluntario> list = voluntarioRepository.getAllVoluntario();
-        return list;
+    public ResponseEntity<List<Voluntario>> getAllVoluntarios() {
+        List<Voluntario> voluntarios = voluntarioRepository.getAllVoluntario();
+        if (voluntarios == null || voluntarios.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(voluntarios, HttpStatus.OK);
+        }
     }
 
     @PostMapping("/voluntario")

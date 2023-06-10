@@ -26,6 +26,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
         }
     }
 
+
     @Override
     public Voluntario createVoluntario(Voluntario voluntario) {
         String sql = "INSERT INTO voluntario (id, nombre, fecha_nacimiento, ubicacion, latitud, longitud) " +

@@ -1,5 +1,6 @@
 package com.grupo3.Lab1.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.locationtech.jts.geom.*;
 
 import java.util.Date;
@@ -9,6 +10,8 @@ public class Voluntario {
     private Integer id;
     private String nombre;
     private Date fecha_nacimiento;
+    @JsonIgnore
+
     private Geometry ubicacion;
     private double latitud;
     private double longitud;

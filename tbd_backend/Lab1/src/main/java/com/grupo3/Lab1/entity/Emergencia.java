@@ -1,5 +1,6 @@
 package com.grupo3.Lab1.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.locationtech.jts.geom.Geometry;
 
 import org.locationtech.jts.geom.*;
@@ -12,6 +13,8 @@ public class Emergencia {
     private String descripcion;
     private Date fecha_inicio;
     private Date fecha_termino;
+    @JsonIgnore
+
     private Geometry ubicacion;
     private Integer id_institucion;
 
