@@ -10,7 +10,7 @@ import org.locationtech.jts.geom.*;
 import java.util.List;
 
 @Repository
-public class VoluntarioRepositoryImp implements VoluntarioRepository{
+public class VoluntarioRepositoryImp implements VoluntarioRepository {
 
     @Autowired
     private Sql2o sql2o;
@@ -18,27 +18,25 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
     @Override
     public List<Voluntario> getAllVoluntario() {
         String sql = "SELECT * FROM voluntario";
-        Connection conn = sql2o.open();
-        try (conn) {
+        try (Connection conn = sql2o.open()) {
             return conn.createQuery(sql).executeAndFetch(Voluntario.class);
         } catch (Exception e) {
             System.out.println(e);
             return null;
-        } finally {
-            conn.close();
         }
     }
 
     @Override
     public Voluntario createVoluntario(Voluntario voluntario) {
-        String sql = "INSERT INTO voluntario (id, nombre, fecha_nacimiento, ubicacion) " +
-                "VALUES (:id, :nombre, :fecha_nacimiento, ST_GeomFromText(:ubicacionText, 4326))";
+        String sql = "INSERT INTO voluntario (id, nombre, fecha_nacimiento, ubicacion, latitud, longitud) " +
+                "VALUES (:id, :nombre, :fecha_nacimiento, ST_GeomFromText(:ubicacionText, 4326), :latitud, :longitud)";
 
-        Connection conn = sql2o.open();
-        try {
-            String ubicacionText = voluntario.getUbicacion().toText();  // Convierte el objeto Point a texto (WKT)
+        try (Connection conn = sql2o.open()) {
+            String ubicacionText = voluntario.getUbicacion().toText();
             int id = (int) conn.createQuery(sql, true)
-                    .addParameter("ubicacionText", ubicacionText)  // Utiliza el texto de ubicación como parámetro
+                    .addParameter("ubicacionText", ubicacionText)
+                    .addParameter("latitud", voluntario.getLatitud())
+                    .addParameter("longitud", voluntario.getLongitud())
                     .bind(voluntario)
                     .executeUpdate()
                     .getKey();
@@ -47,62 +45,51 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
         } catch (Exception e) {
             System.out.println(e);
             return null;
-        } finally {
-            conn.close();
         }
     }
-
-
-
-
 
     @Override
     public Voluntario updateVoluntario(Voluntario voluntario) {
-        String sql = "UPDATE voluntario SET nombre = :nombre, fecha_nacimiento = :fecha_nacimiento"
-                + " WHERE id = :id";
-        Connection conn = sql2o.open();
-        try (conn) {
+        String sql = "UPDATE voluntario SET nombre = :nombre, fecha_nacimiento = :fecha_nacimiento, " +
+                "ubicacion = ST_GeomFromText(:ubicacionText, 4326), latitud = :latitud, longitud = :longitud " +
+                "WHERE id = :id";
+        try (Connection conn = sql2o.open()) {
+            String ubicacionText = voluntario.getUbicacion().toText();
             conn.createQuery(sql)
+                    .addParameter("ubicacionText", ubicacionText)
+                    .addParameter("latitud", voluntario.getLatitud())
+                    .addParameter("longitud", voluntario.getLongitud())
                     .bind(voluntario)
                     .executeUpdate();
             return voluntario;
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             return null;
-        }finally{
-            conn.close();
         }
     }
-
-
 
     @Override
     public void deleteVoluntarioById(Integer id) {
         String sql = "DELETE FROM voluntario WHERE id = :id";
-        Connection conn = sql2o.open();
-        try (conn) {
+        try (Connection conn = sql2o.open()) {
             conn.createQuery(sql)
                     .addParameter("id", id)
                     .executeUpdate();
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
-        }finally{
-            conn.close();
         }
     }
+
     @Override
     public Voluntario getVoluntarioById(Integer id) {
         String sql = "SELECT * FROM voluntario WHERE id = :id";
-        Connection conn = sql2o.open();
-        try (conn) {
+        try (Connection conn = sql2o.open()) {
             return conn.createQuery(sql)
                     .addParameter("id", id)
                     .executeAndFetchFirst(Voluntario.class);
         } catch (Exception e) {
             System.out.println(e);
             return null;
-        } finally {
-            conn.close();
         }
     }
 }

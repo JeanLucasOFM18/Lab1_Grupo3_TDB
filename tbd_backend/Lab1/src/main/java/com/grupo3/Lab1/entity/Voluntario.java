@@ -10,21 +10,19 @@ public class Voluntario {
     private String nombre;
     private Date fecha_nacimiento;
     private Geometry ubicacion;
-    /*
-    public Voluntario(Integer id, String nombre, Date fecha_nacimiento) {
-        this.id = id;
-        this.nombre = nombre;
-        this.fecha_nacimiento = fecha_nacimiento;
+    private double latitud;
+    private double longitud;
 
-    } */
     public Voluntario(Integer id, String nombre, Date fecha_nacimiento, double latitud, double longitud) {
         this.id = id;
         this.nombre = nombre;
         this.fecha_nacimiento = fecha_nacimiento;
-        this.ubicacion = crearGeometriaConCordenadas(latitud, longitud);
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.ubicacion = crearGeometriaConCoordenadas(latitud, longitud);
     }
 
-    private Geometry crearGeometriaConCordenadas(double latitud, double longitud) {
+    private Geometry crearGeometriaConCoordenadas(double latitud, double longitud) {
         GeometryFactory geometryFactory = new GeometryFactory(new PrecisionModel(), 4326);
         Coordinate coordinate = new Coordinate(longitud, latitud);
         Point point = geometryFactory.createPoint(coordinate);
@@ -54,7 +52,31 @@ public class Voluntario {
     public void setFecha_nacimiento(Date fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
-    public void setUbicacion(double latitud, double longitud){this.ubicacion = crearGeometriaConCordenadas(latitud, longitud);
+
+    public double getLatitud() {
+        return latitud;
     }
-    public Geometry getUbicacion(){return ubicacion;}
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+        actualizarUbicacion();
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+        actualizarUbicacion();
+    }
+
+    private void actualizarUbicacion() {
+        this.ubicacion = crearGeometriaConCoordenadas(latitud, longitud);
+    }
+
+    public Geometry getUbicacion() {
+        return ubicacion;
+    }
+
 }

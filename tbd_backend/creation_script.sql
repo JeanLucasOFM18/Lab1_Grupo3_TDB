@@ -72,6 +72,14 @@ CREATE TABLE public.voluntario (
     id serial NOT NULL PRIMARY KEY,
     nombre varchar(100),
     fecha_nacimiento date,
-    ubicacion geography(Point, 4326)
+    ubicacion geography(Point, 4326),
+    latitud double precision,
+    longitud double precision
 );
 
+CREATE TABLE usuario (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    rol VARCHAR(255)
+);

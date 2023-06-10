@@ -2,9 +2,13 @@ package com.grupo3.Lab1.service;
 
 import com.grupo3.Lab1.entity.Voluntario;
 import com.grupo3.Lab1.repository.VoluntarioRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -44,6 +48,20 @@ public class VoluntarioService {
         voluntarioRepository.deleteVoluntarioById(id);
         return "Se ha eliminado el elemento con id: " + id;
     }
+    @GetMapping("/voluntario/ubicacion/{id}")
+    public ResponseEntity<Map<String, Double>> getUbicacionVoluntario(@PathVariable Integer id){
+        Voluntario voluntario = voluntarioRepository.getVoluntarioById(id);
+
+        if (voluntario == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Map<String, Double> response = new HashMap<>();
+        response.put("latitud", voluntario.getLatitud());
+        response.put("longitud", voluntario.getLongitud());
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
     /*
     @PutMapping("/voluntario/{id}/ubicacion")
     public String setUbicacionByCoordinates(@PathVariable Integer id,
