@@ -25,13 +25,13 @@ public class TareaService {
         return tareaCreada;
     }
 
-    @PutMapping("/tarea/update")
+    @PutMapping("/tareas/update")
     public String updateTarea(@RequestBody Tarea tarea){
         Tarea result = tareaRepository.updateTarea(tarea);
         return "Se ha actualizado el elemento con id: " + result.getId();
     }
 
-    @DeleteMapping("/tarea/delete/{id}")
+    @DeleteMapping("/tareas/delete/{id}")
     public String deleteTarea(@PathVariable Integer id){
         tareaRepository.deleteTareaById(id);
         return "Se ha eliminado el elemento con id: " + id;

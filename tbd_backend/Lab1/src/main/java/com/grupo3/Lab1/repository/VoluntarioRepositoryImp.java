@@ -31,8 +31,8 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
 
     @Override
     public Voluntario createVoluntario(Voluntario voluntario) {
-        String sql = "INSERT INTO voluntario (nombre, fecha_nacimiento, ubicacion) " +
-                "VALUES (:nombre, :fecha_nacimiento, ST_GeomFromText(:ubicacionText, 4326))";
+        String sql = "INSERT INTO voluntario (id, nombre, fecha_nacimiento, ubicacion) " +
+                "VALUES (:id, :nombre, :fecha_nacimiento, ST_GeomFromText(:ubicacionText, 4326))";
 
         Connection conn = sql2o.open();
         try {

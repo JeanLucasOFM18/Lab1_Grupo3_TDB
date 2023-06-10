@@ -27,13 +27,13 @@ public class Estado_TareaService {
         return "Se ha creado el elemento con id: " + result.getId();
     }
 
-    @PutMapping("/estado_tarea/update")
+    @PutMapping("/estados_tarea/update")
     public String updateEstado_Tarea(@RequestBody Estado_Tarea estado_tarea){
         Estado_Tarea result = estado_tareaRepository.updateEstado_Tarea(estado_tarea);
         return "Se ha actualizado el elemento con id: " + result.getId();
     }
 
-    @DeleteMapping("/estado_tarea/delete/{id}")
+    @DeleteMapping("/estados_tarea/delete/{id}")
     public String deleteEstado_Tarea(@PathVariable Integer id){
         estado_tareaRepository.deleteEstado_TareaById(id);
         return "Se ha eliminado el elemento con id: " + id;

@@ -9,29 +9,42 @@ import org.sql2o.Sql2o;
 import java.util.List;
 
 @Repository
-public class UsuarioRepositoryImp implements UsuarioRepository{
+public class UsuarioRepositoryImp implements UsuarioRepository {
 
     @Autowired
     private Sql2o sql2o;
 
     @Override
-    public List<Usuario> getAllUsuario(){
+    public List<Usuario> getAllUsuario() {
         String sql = "SELECT * FROM usuario";
         Connection conn = sql2o.open();
         try (conn) {
             return conn.createQuery(sql).executeAndFetch(Usuario.class);
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             return null;
-        }finally{
+        } finally {
             conn.close();
         }
     }
 
     @Override
+    public Usuario getUsuarioByUsername(String username) {
+        String sql = "SELECT * FROM usuario WHERE username = :username";
+        try (Connection conn = sql2o.open()) {
+            return conn.createQuery(sql)
+                    .addParameter("username", username)
+                    .executeAndFetchFirst(Usuario.class);
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    @Override
     public Usuario createUsuario(Usuario usuario){
-        String sql = "INSERT INTO usuario (correo, password, rol) " +
-                "VALUES (:correo, :password, :rol)";
+        String sql = "INSERT INTO usuario (username, password, rol) " +
+                "VALUES (:username, :password, :rol)";
         Connection conn = sql2o.open();
         try (conn) {
             int id = (int) conn.createQuery(sql,true)

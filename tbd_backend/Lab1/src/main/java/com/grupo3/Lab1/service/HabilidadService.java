@@ -27,13 +27,13 @@ public class HabilidadService {
         return "Se ha creado el elemento con id: " + result.getId();
     }
 
-    @PutMapping("/habilidad/update")
+    @PutMapping("/habilidades/update")
     public String updateHabilidad(@RequestBody Habilidad habilidad){
         Habilidad result = habilidadRepository.updateHabilidad(habilidad);
         return "Se ha actualizado el elemento con id: " + result.getId();
     }
 
-    @DeleteMapping("/habilidad/delete/{id}")
+    @DeleteMapping("/habilidades/delete/{id}")
     public String deleteHabilidad(@PathVariable Integer id){
         habilidadRepository.deleteHabilidadById(id);
         return "Se ha eliminado el elemento con id: " + id;

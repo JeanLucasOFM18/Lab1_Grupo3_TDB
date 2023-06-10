@@ -10,4 +10,5 @@ public interface UsuarioRepository {
     public Usuario createUsuario(Usuario usuario);
     public Usuario updateUsuario(Usuario usuario);
     public void deleteUsuarioById(Integer id);
+    public Usuario getUsuarioByUsername(String username);
 }

@@ -1,15 +1,17 @@
 package com.grupo3.Lab1.entity;
 
+import java.util.Set;
+
 public class Usuario {
 
     private Integer id;
-    private String correo;
+    private String username;
     private String password;
     private String rol;
 
-    public Usuario(Integer id, String correo, String password, String rol) {
+    public Usuario(Integer id, String username, String password, String rol) {
         this.id = id;
-        this.correo = correo;
+        this.username = username;
         this.password = password;
         this.rol = rol;
     }
@@ -22,12 +24,12 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getUsername() {
+        return username;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
