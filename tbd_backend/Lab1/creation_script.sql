@@ -173,9 +173,9 @@ begin
 	WHERE i.veces = (SELECT MAX(veces) FROM maxmod_usuario i WHERE i.accion = 'I')
 	AND i.accion = 'I';
 	-- se obtiene el nombre del usuario en la variable nombreusuario
-	SELECT v.nombre into nombreusuario
-	FROM voluntario v
-	WHERE v.id_usuario = idusuario;
+	SELECT u.username into nombreusuario
+	FROM usuario u
+	WHERE u.id = idusuario;
 	-- se insertan los datos en la tabla de reporte
 	IF idusuario IS NOT NULL and op IS NOT NULL and cant IS NOT NULL THEN
 		insert into reporte(id_usuario,nombre_usuario, operacion, tabla, n_veces)
@@ -192,9 +192,9 @@ begin
 	WHERE i.veces = (SELECT MAX(veces) FROM maxmod_usuario i WHERE i.accion = 'U')
 	AND i.accion = 'U';
 	-- se obtiene el nombre del usuario en la variable nombreusuario
-	SELECT v.nombre into nombreusuario
-	FROM voluntario v
-	WHERE v.id_usuario = idusuario;
+	SELECT u.username into nombreusuario
+	FROM usuario u
+	WHERE u.id = idusuario;
 	-- se insertan los datos en la tabla de reporte
 	IF idusuario IS NOT NULL and op IS NOT NULL and cant IS NOT NULL THEN
 		insert into reporte(id_usuario,nombre_usuario, operacion, tabla, n_veces)
@@ -210,9 +210,9 @@ begin
 	WHERE i.veces = (SELECT MAX(veces) FROM maxmod_usuario i WHERE i.accion = 'D')
 	AND i.accion = 'D';
 	-- se obtiene el nombre del usuario en la variable nombreusuario
-	SELECT v.nombre into nombreusuario
-	FROM voluntario v
-	WHERE v.id_usuario = idusuario;
+	SELECT u.username into nombreusuario
+	FROM usuario u
+	WHERE u.id = idusuario;
 	-- se insertan los datos en la tabla de reporte
 	IF idusuario IS NOT NULL and op IS NOT NULL and cant IS NOT NULL THEN
 		insert into reporte(id_usuario,nombre_usuario, operacion, tabla, n_veces)

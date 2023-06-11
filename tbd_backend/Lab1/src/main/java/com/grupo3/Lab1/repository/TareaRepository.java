@@ -8,9 +8,9 @@ public interface TareaRepository {
 
     public List<Tarea> getAllTarea();
 
-    public Tarea createTarea(Tarea tarea);
+    public Tarea createTarea(Tarea tarea, Integer userid);
 
-    public Tarea updateTarea(Tarea tarea);
+    public Tarea updateTarea(Tarea tarea, Integer userid);
 
-    public void deleteTareaById(Integer id);
+    public void deleteTareaById(Integer id, Integer userid);
 }
