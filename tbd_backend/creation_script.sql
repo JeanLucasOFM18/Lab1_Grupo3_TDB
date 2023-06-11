@@ -12,6 +12,7 @@ CREATE TABLE public.emergencia (
     descripcion varchar(400),
     fecha_inicio date,
     fecha_termino date,
+    ubicacion geography(Point, 4326),
     id_institucion int,
 	foreign key (id_institucion) references institucion(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
