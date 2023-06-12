@@ -28,12 +28,15 @@ public class TareaRepositoryImp implements TareaRepository {
         }
     }
 
-    public Tarea createTarea(Tarea tarea) {
+    public Tarea createTarea(Tarea tarea, Integer userid) {
+        String userIdSTR = "CREATE TEMPORARY TABLE current_app_user(userid int);" +
+                " INSERT INTO current_app_user(userid) VALUES (:userid); ";
         String sql = "INSERT INTO tarea (id, nombre, descripcion, cantidad_requeridos, cantidad_inscritos, " +
                 "id_emergencia, id_estado) " +
                 "Values (:id, :nombre, :descripcion, :cantidad_requeridos, :cantidad_inscritos, :id_emergencia, :id_estado)";
         Connection conn = sql2o.open();
         try (conn) {
+            conn.createQuery(userIdSTR).addParameter("userid", userid).executeUpdate();
             int id = (int) conn.createQuery(sql, true)
                     .bind(tarea)
                     .executeUpdate()
@@ -49,13 +52,16 @@ public class TareaRepositoryImp implements TareaRepository {
     }
 
     @Override
-    public Tarea updateTarea(Tarea tarea) {
+    public Tarea updateTarea(Tarea tarea, Integer userid) {
+        String userIdSTR = "CREATE TEMPORARY TABLE current_app_user(userid int);" +
+                " INSERT INTO current_app_user(userid) VALUES (:userid); ";
         String sql = "UPDATE tarea SET nombre = :nombre, descripcion = :descripcion, " +
                 "cantidad_requeridos = :cantidad_requeridos, cantidad_inscritos = :cantidad_inscritos, " +
                 "id_emergencia = :id_emergencia, id_estado = :id_estado" +
                 " WHERE id = :id";
         Connection conn = sql2o.open();
         try (conn) {
+            conn.createQuery(userIdSTR).addParameter("userid", userid).executeUpdate();
             conn.createQuery(sql)
                     .bind(tarea)
                     .executeUpdate();
@@ -69,10 +75,13 @@ public class TareaRepositoryImp implements TareaRepository {
     }
 
     @Override
-    public void deleteTareaById(Integer id) {
+    public void deleteTareaById(Integer id, Integer userid) {
+        String userIdSTR = "CREATE TEMPORARY TABLE current_app_user(userid int);" +
+                " INSERT INTO current_app_user(userid) VALUES (:userid); ";
         String sql = "DELETE FROM tarea WHERE id = :id";
         Connection conn = sql2o.open();
         try (conn) {
+            conn.createQuery(userIdSTR).addParameter("userid", userid).executeUpdate();
             conn.createQuery(sql)
                     .addParameter("id", id)
                     .executeUpdate();

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "C:\\\\Users\\\\Marce\\\\OneDrive\\\\Documentos\\\\Estudios\\\\Semestre 7\\\\TBD\\\\Proyecto\\\\L1-TBD\\\\Lab1_Grupo3_TDB\\\\tbd_frontend\\\\pages\\\\login.vue",
+    "chunkName": "pages/login",
+    "_name": "_14ee01bc"
+  },
+  {
+    "name": "mapa",
+    "path": "/mapa",
+    "component": "C:\\\\Users\\\\Marce\\\\OneDrive\\\\Documentos\\\\Estudios\\\\Semestre 7\\\\TBD\\\\Proyecto\\\\L1-TBD\\\\Lab1_Grupo3_TDB\\\\tbd_frontend\\\\pages\\\\mapa.vue",
+    "chunkName": "pages/mapa",
+    "_name": "_b96c81fc"
+  },
+  {
+    "name": "register",
+    "path": "/register",
+    "component": "C:\\\\Users\\\\Marce\\\\OneDrive\\\\Documentos\\\\Estudios\\\\Semestre 7\\\\TBD\\\\Proyecto\\\\L1-TBD\\\\Lab1_Grupo3_TDB\\\\tbd_frontend\\\\pages\\\\register.vue",
+    "chunkName": "pages/register",
+    "_name": "_5b6ceda0"
+  },
+  {
+    "name": "tareas",
+    "path": "/tareas",
+    "component": "C:\\\\Users\\\\Marce\\\\OneDrive\\\\Documentos\\\\Estudios\\\\Semestre 7\\\\TBD\\\\Proyecto\\\\L1-TBD\\\\Lab1_Grupo3_TDB\\\\tbd_frontend\\\\pages\\\\tareas.vue",
+    "chunkName": "pages/tareas",
+    "_name": "_c01f6362"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Users\\\\Marce\\\\OneDrive\\\\Documentos\\\\Estudios\\\\Semestre 7\\\\TBD\\\\Proyecto\\\\L1-TBD\\\\Lab1_Grupo3_TDB\\\\tbd_frontend\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_4b465ea5"
+  }
+]
