@@ -18,7 +18,11 @@ public class Emergencia {
     private Geometry ubicacion;
     private Integer id_institucion;
 
-    public Emergencia(Integer id, String nombre, String descripcion, Date fecha_inicio, Date fecha_termino, double latitud, double longitud, Integer id_institucion) {
+    private String region;
+
+
+    //Constructor 1
+    public Emergencia(Integer id, String nombre, String descripcion, Date fecha_inicio, Date fecha_termino, double latitud, double longitud, Integer id_institucion, String region) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -26,7 +30,19 @@ public class Emergencia {
         this.fecha_termino = fecha_termino;
         this.ubicacion = crearGeometriaConCordenadas(latitud, longitud);
         this.id_institucion = id_institucion;
+        this.region = region;
     }
+    //Constructor 2
+    public Emergencia(String region, Integer id, String nombre, String descripcion, Date fecha_inicio, Date fecha_termino, Integer id_institucion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.fecha_inicio = fecha_inicio;
+        this.fecha_termino = fecha_termino;
+        this.id_institucion = id_institucion;
+        this.region = region;
+    }
+
 
     public Integer getId() {
         return id;
@@ -89,5 +105,13 @@ public class Emergencia {
         Coordinate coordinate = new Coordinate(longitud, latitud);
         Point point = geometryFactory.createPoint(coordinate);
         return point;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 }
