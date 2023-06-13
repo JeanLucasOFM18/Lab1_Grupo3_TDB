@@ -47,6 +47,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/reporte/**").permitAll()
                         .anyRequest().authenticated()
 
+                        // Para testear Spring Security en backend eliminar bloque de código de arriba y reemplazar por bloque de abajo.
                         /*
                         .requestMatchers("/register/**").permitAll()
                         .requestMatchers("/login/**").permitAll()
